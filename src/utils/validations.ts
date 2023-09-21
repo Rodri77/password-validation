@@ -19,8 +19,20 @@ export const applyRules =
 const regexRule = (regex: RegExp, error: string) => (value: string) =>
   regex.test(value) ? undefined : error;
 
+export const containsSpecialChar = regexRule(
+  SPECIAL_CHAR_REGEX,
+  REQUIRED_SPECIAL_CHAR
+);
+
+export const containsNumber = regexRule(NUMBER_REGEX, REQUIRED_NUMBER);
+
+export const containsUppercase = regexRule(
+  UPPERCASE_REGEX,
+  REQUIRED_UPPERCASE_LETTER
+);
+
 export const passwordRules = [
-  regexRule(SPECIAL_CHAR_REGEX, REQUIRED_SPECIAL_CHAR),
-  regexRule(NUMBER_REGEX, REQUIRED_NUMBER),
-  regexRule(UPPERCASE_REGEX, REQUIRED_UPPERCASE_LETTER),
+  containsSpecialChar,
+  containsNumber,
+  containsUppercase,
 ];
