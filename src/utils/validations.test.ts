@@ -4,6 +4,7 @@ import {
   containsUppercase,
   containsSpecialChar,
   containsNumber,
+  containsNoConsecutiveLetters,
 } from "./validations";
 
 test("Contains a special char", () => {
@@ -28,4 +29,14 @@ test("Contains an uppercase letter", () => {
 
 test("Does not contain an uppercase letter", () => {
   expect(containsUppercase("test")).toEqual("Has an uppercase Letter");
+});
+
+test("Contains consecutive letters", () => {
+  expect(containsNoConsecutiveLetters("abd123456")).toEqual(
+    "Has NO consecutive letters"
+  );
+});
+
+test("Does not contain consecutive letters", () => {
+  expect(containsNoConsecutiveLetters("acebd123456")).toEqual(undefined);
 });
