@@ -16,13 +16,11 @@ const PasswordField: FC<Props> = ({ options }) => (
     {({ input, meta }) => (
       <div className="field">
         <div className="field-input">
-          <Input
-            placeholder="Password"
-            value={input.value}
-            onChange={input.onChange}
-          />
+          <Input placeholder="Password" {...input} />
         </div>
-        {!meta.pristine && <ErrorFields errors={meta.error} />}
+        {(!meta.pristine || meta.touched) && (
+          <ErrorFields errors={meta.error} />
+        )}
       </div>
     )}
   </Field>
